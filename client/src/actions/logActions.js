@@ -15,7 +15,7 @@ import { BACK_URI } from "../config/keys";
 export const getLogs = () => async (dispatch) => {
   try {
     setLoading();
-    const res = await fetch(`${BACK_URI}/api/logs`);
+    const res = await fetch(`/api/logs`);
     const data = await res.json();
     const count = data.length;
 
@@ -37,7 +37,7 @@ export const addLog = (log) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(`${BACK_URI}/api/logs`, {
+    const res = await fetch(`/api/logs`, {
       method: "POST",
       body: JSON.stringify(log),
       headers: {
@@ -63,7 +63,7 @@ export const addLog = (log) => async (dispatch) => {
 export const deleteLog = (id) => async (dispatch) => {
   try {
     setLoading();
-    await fetch(`${BACK_URI}/api/logs/${id}`, {
+    await fetch(`/api/logs/${id}`, {
       method: "DELETE",
     });
 
@@ -84,7 +84,7 @@ export const updateLog = (log) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(`${BACK_URI}/api/logs/${log._id}`, {
+    const res = await fetch(`/api/logs/${log._id}`, {
       method: "PUT",
       body: JSON.stringify(log),
       headers: {
@@ -110,7 +110,7 @@ export const updateLog = (log) => async (dispatch) => {
 export const searchLogs = (text) => async (dispatch) => {
   try {
     setLoading();
-    const res = await fetch(`${BACK_URI}/api/logs/search?searchterm=${text}`);
+    const res = await fetch(`/api/logs/search?searchterm=${text}`);
     const data = await res.json();
     const count = data.length;
 
