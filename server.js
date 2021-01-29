@@ -5,6 +5,9 @@ const path = require("path");
 
 const app = express();
 
+const logs = require("./routes/api/logs.js");
+const techs = require("./routes/api/techs.js");
+
 // Connect Database
 connectDB();
 
@@ -19,10 +22,11 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
+app.use("/api/logs", logs);
+app.use("/api/techs", techs);
 // Define Routes
-app.use("/api/logs", require("./routes/logs"));
-app.use("/api/techs", require("./routes/techs"));
+// app.use("/api/logs", require("./routes/api/logs"));
+// app.use("/api/techs", require("./routes/techs"));
 
 const PORT = process.env.PORT || 5000;
 

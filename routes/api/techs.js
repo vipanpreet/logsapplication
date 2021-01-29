@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const Tech = require("../models/Tech");
+const Tech = require("../../models/Tech");
 
 router.get("/", async (req, res) => {
   try {
